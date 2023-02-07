@@ -61,7 +61,7 @@ public class Player_Mover : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Platforms")
-            && rbody.velocity.y <= 0f) // to prevent "swiming up" inside platforms
+            && rbody.velocity.y == 0f) // to prevent "swiming up" inside platforms
         {
             grounded = true;
         }

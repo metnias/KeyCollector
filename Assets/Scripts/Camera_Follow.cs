@@ -24,15 +24,18 @@ public class Camera_Follow : MonoBehaviour
     {
         Vector3 relative = player.transform.position - transform.position;
         Vector3 target = Vector3.zero;
-        // Vertical
+
+        // Camera movements is *fun*
+        // This time I'm using Super Mario World's method.
+        // Vertical: Platform Snapping & Camera Window
         if (mover != null)
         {
             bool grounded = mover.Grounded();
-            if (grounded) // platform snap
+            if (grounded) // Platform Snapping
             {
                 target.y = vertPos + relative.y;
             }
-            else // follow
+            else // Camera Window
             {
                 if (relative.y > vertCap)
                 {
@@ -45,12 +48,11 @@ public class Camera_Follow : MonoBehaviour
             }
         }
 
-        
-        // Horizontal
+        // Horizontal: Dual Forward Focus w/ threshold triggered
         if (right)
         {
-            if (relative.x > -horzPos) target.x = relative.x + horzPos;
-            else if (relative.x < -horzTurn) right = false;
+            if (relative.x > -horzPos) target.x = relative.x + horzPos; // Forward Focus
+            else if (relative.x < -horzTurn) right = false; // threshold trigger
         }
         else
         {
@@ -60,8 +62,9 @@ public class Camera_Follow : MonoBehaviour
 
         // Apply target
         // target = Vector3.Lerp(Vector3.zero, target, lerpSpeed);
-        target.x = Mathf.Clamp(target.x, -lerpCapSpeed, lerpCapSpeed); // horizontal cap
-        target.y = Mathf.Min(target.y, lerpCapSpeed); // rising cap
+        target.x = Mathf.Clamp(target.x, -lerpCapSpeed, lerpCapSpeed); // Horizontal Speed Cap
+        target.y = Mathf.Min(target.y, lerpCapSpeed); // Vertical Upward Speed Cap
+                                                      // (No downward speed cap as that may result unfair situations)
         transform.Translate(target);
     }
 }
