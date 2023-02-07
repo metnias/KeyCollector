@@ -26,6 +26,6 @@ public class Bullet_Move : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(new Vector3(0f, 0f, right ? 2f : -2f)); // spin
+        transform.Rotate(new Vector3(0f, 0f, right ? 6f : -6f)); // spin
     }
 }
