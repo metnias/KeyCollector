@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enemy patrolling on platform script
+/// </summary>
 public class Enemy_Patrol : MonoBehaviour
 {
     public float speed = 3f;
@@ -35,6 +36,8 @@ public class Enemy_Patrol : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Platforms")) return;
+        // if the trigger leaves the platform:
+        // it's about to fall, so turn back
         left = !left;
     }
 }

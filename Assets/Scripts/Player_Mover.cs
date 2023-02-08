@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// script for moving player around
+/// </summary>
 public class Player_Mover : MonoBehaviour
 {
     public float speed = 3f;

@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Shoots bullet
+/// </summary>
 public class Player_Shoot : MonoBehaviour
 {
     public GameObject bullet;
@@ -40,9 +41,10 @@ public class Player_Shoot : MonoBehaviour
                 var b = Instantiate(bullet);
                 b.transform.position = transform.position;
                 b.GetComponent<Bullet_Move>().Fire(!spr.flipX);
+                // use player sprite direction for shoot direction
             }
         }
-        
+
     }
 
 }

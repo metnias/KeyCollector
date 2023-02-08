@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// script for clicking/pressing jump changing scene
+/// </summary>
 public class Click_ChangeScene : MonoBehaviour
 {
     public int sceneNumber = 0;

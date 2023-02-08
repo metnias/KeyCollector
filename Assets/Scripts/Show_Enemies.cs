@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Shows enemy counter to TMP
+/// </summary>
 public class Show_Enemies : MonoBehaviour
 {
     private TMP_Text text;

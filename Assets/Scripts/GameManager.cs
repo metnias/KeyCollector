@@ -1,6 +1,9 @@
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Singleton game manager
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance() => _instance;
@@ -13,10 +16,16 @@ public class GameManager : MonoBehaviour
     public GameObject UIGameOver;
     public GameObject UIGameWin;
 
+    /// <summary>
+    /// Score getter
+    /// </summary>
     public int Score() => score;
     private int score;
     private int timer;
     private int enemyCount;
+    /// <summary>
+    /// Enemy count getter
+    /// </summary>
     public int Enemies() => enemyCount;
 
     private void Start()
@@ -36,9 +45,13 @@ public class GameManager : MonoBehaviour
         {
             timer = 10;
             if (score > 0) score--;
+            else GameOver(); // trigger game over when the score hits 0 (time over)
         }
     }
 
+    /// <summary>
+    /// Resets game
+    /// </summary>
     private void InitializeGame()
     {
         keys = new bool[3];
@@ -54,24 +67,39 @@ public class GameManager : MonoBehaviour
 
     private bool[] keys;
 
+    /// <summary>
+    /// Whether the player has collected this key
+    /// </summary>
     public bool HasKey(int keyNum) => keys[keyNum];
 
+    /// <summary>
+    /// Notify that the player collected this key
+    /// </summary>
     public void CollectKey(int keyNum)
     {
         keys[keyNum] = true;
     }
 
+    /// <summary>
+    /// Reduce score
+    /// </summary>
     public void ReduceScore(int score)
     {
         this.score -= score;
-        if (this.score <= 0) { this.score = 0; GameOver(); }
+        if (this.score <= 0) this.score = 0;
     }
 
+    /// <summary>
+    /// Notify that enemy count is reduced by 1
+    /// </summary>
     public void EnemyKilled()
     {
         enemyCount--;
     }
 
+    /// <summary>
+    /// Trigger game over
+    /// </summary>
     public void GameOver()
     {
         Time.timeScale = 0f;
@@ -83,12 +111,18 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Check whether the game has met win condition
+    /// </summary>
     public bool CanWin()
     {
         if (keys.Contains(false)) return false; // key collect check
         return enemyCount < 1; // enemy purge check
     }
 
+    /// <summary>
+    /// Trigger game win
+    /// </summary>
     public void GameWin()
     {
         Time.timeScale = 0f;

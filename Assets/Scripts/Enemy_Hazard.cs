@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enemy collsion script
+/// </summary>
 public class Enemy_Hazard : MonoBehaviour
 {
     public int penalty = 200;
@@ -13,6 +14,8 @@ public class Enemy_Hazard : MonoBehaviour
         GameManager.Instance().GameOver();
         collision.gameObject.SetActive(false);
 
+        // originally planned to give score penalty upon hit, but
+        // decided not to after adding bullets
         /*
         GameManager.Instance().ReduceScore(penalty);
         // Flings player away

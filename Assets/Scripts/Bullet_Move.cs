@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Bullet moving script
+/// </summary>
 public class Bullet_Move : MonoBehaviour
 {
     public float fireSpeed = 100f;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Trigger for key collect
+/// </summary>
 public class Item_Collect : MonoBehaviour
 {
     public int keyNum = 0;

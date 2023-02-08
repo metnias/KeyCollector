@@ -1,9 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Bullet collision script
+/// </summary>
 public class Bullet_Collide : MonoBehaviour
 {
+    /// <summary>
+    /// Whether this is active, for preventing double-kill
+    /// </summary>
     private bool alive;
 
     private void Start()

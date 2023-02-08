@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Camera following player script
+/// </summary>
 public class Camera_Follow : MonoBehaviour
 {
     public GameObject player;
